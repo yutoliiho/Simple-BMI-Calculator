@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--            Style          -->
+<head>
+    <style>
+        p.heading{
+            width: 100%;
+            height: 35px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .weight{
+            width: 40%;
+            height: 25px;
+            text-align: center;
+            margin-top: 10px;
+            background-color: powderblue;
+        }
+        .height{
+            width: 45%;
+            height: 25px;
+            text-align: center;
+            margin-top: 10px;
+            background-color: powderblue;
+        }
+
+        .calc-button{
+            width: 40%;
+            height: 25px;
+            text-align: center;
+            background-color: rgb(54, 62, 63);
+            color: white;
+            weight: 20%;
+            margin: 20px auto 20px auto
+        }
+
+    </style>
+
+    
+        <meta charset="utf-8">
+        <title>BMI Calculator</title>
+    </head>
+<!--            Body          -->
+    <body>
+    <p class="heading">Calculate Your BMI</p>
+    <center>
+    <input type="number" placeholder="Weight"class="weight" id="weight">lbs</input>
+    <input type="number" placeholder="Height" class="height" id="height">cm</input>
+    <input type="button" value="Calculate" class="calc-button" id="button"></input>
+    <p class="result" id="result">BMI result will show up here</p>
+    <p class="range" id="range"></p>
+    </center>
+    
+<!--            script          -->
+    <script>
+        function calculate(){
+            var weight = document.getElementById("weight").value;
+            var height = document.getElementById("height").value;
+
+            var BMInum = (weight*0.453592) / (Math.pow((height/100),2));
+            var BMI = BMInum.toFixed(1)
+            
+            console.log(BMI);
+            document.getElementById("result").innerHTML = "Your BMI is" + BMI;
+            
+            if(BMI<18.5){
+                document.getElementById("range").innerHTML = "At BMI "+ BMI + ", you are Underweight"
+            }
+            else if(BMI>=18.5 && BMI<24.9){
+                document.getElementById("range").innerHTML = "At BMI "+ BMI + ", you are considered Normal weight"
+            }
+            else if(BMI>=24.9 && BMI<29.9){
+                document.getElementById("range").innerHTML = "At BMI "+ BMI + ", you are considered Overweight"
+            }
+            else if(BMI>=29.9){
+                document.getElementById("range").innerHTML = "At BMI "+ BMI + ", you are considered Obesity"
+            }
+        
+
+
+        }
+        
+        document.getElementById("button").onclick=function() {
+    calculate(); 
+  };
+
+    </script>
+    </body>
+</html>
+
+<!-- // weight (kg) / [height (m)]^2
+
+// 41.7305 / (163/100)^2  -->
+ 
